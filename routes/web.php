@@ -28,4 +28,5 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/payment','OrderController@prepaidPayment')->name('payment.store');
     //product page
     Route::get('/product','ProductController@create')->name('product.create');
+    Route::post('/product','ProductController@store')->name('product.store');
 });
