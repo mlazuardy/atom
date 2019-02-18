@@ -13,8 +13,8 @@ class OrderRepository
         $this->model = $order;
     }
 
-    public function getUserOrders()
+    public function getUserOrders($search)
     {
-        return $this->model->where('user_id',auth()->id())->orderBy('created_at','desc');
+        return $this->model->search($search)->where('user_id',auth()->id())->orderBy('created_at','desc');
     }
 }

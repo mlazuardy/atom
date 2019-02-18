@@ -26,4 +26,9 @@ class Order extends Model
     {
         return number_format($value, 0, ',', '.');
     }
+
+    public function scopeSearch($query,$search)
+    {
+        return $query->where('order_number','like',"%$search%");
+    }
 }

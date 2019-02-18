@@ -19,7 +19,9 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = $this->orderRepository->getUserOrders()->paginate(20);
+        $search = request()->only('search');
+        $orders = $this->orderRepository->getUserOrders(request('search'))->paginate(20);
+        $orders->appends(request()->only('search'));
         return view('orders.index',compact('orders'));
     }
 

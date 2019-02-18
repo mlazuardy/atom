@@ -7,6 +7,9 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Order History</h4>
+                        <form action="">
+                            <input type="search" name="search" placeholder="Search By Order Number" value="{{old('search')}}" class="form-control" id="">
+                        </form>
                     </div>
                     <div class="card-body p-0">
                         <table class="table mb-0">
@@ -55,6 +58,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {{$orders->links()}}
+                        </div>
                     </div>
                 </div>
             </div>
