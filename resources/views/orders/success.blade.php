@@ -20,7 +20,7 @@
                                 <h3>Total</h3>
                             </div>
                             <div class="col-md-6 text-right">
-                                <h3>Rp {{number_format($order->total,0,',','.')}}</h3>
+                                <h3>Rp {{$order->rupiah}}</h3>
                             </div>
                         </div>
                         @if($order->orderable_type == "App\Prepaid")
