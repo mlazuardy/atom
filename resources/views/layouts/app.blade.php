@@ -33,7 +33,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @auth
+                        <li class="nav-item">
+                            <a href="{{route('prepaid.create')}}" class="nav-link">
+                                Prepaid Balance
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('product.create')}}" class="nav-link">Product Page</a>
+                        </li>
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -50,7 +59,9 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <span class="nav-link">2 Prepaid Order</span>
+                                <span class="nav-link">
+                                    {{Auth::user()->orders()->where('status','unpaid')->count()}} Unpaid Order
+                                </span>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
