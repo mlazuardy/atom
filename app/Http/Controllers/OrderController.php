@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Order;
 use Illuminate\Validation\Rule;
 use App\Repository\OrderRepository;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -47,9 +48,18 @@ class OrderController extends Controller
             ]
         ]);
         
-        $order = $this->orderRepository->getUnpaidOrder()->whereOrderNumber($no)->firstOrFail();
+        DB::beginTransaction();
+        $order = $this->orderRepository->getUnpaidOrder()->whereOrderNumber($request->order_number)->firstOrFail();
         $order->status = 'success';
         $order->save();
+        if($order->orderable_type == "App\Product"){
+            $order->orderable()->update(['shipping_code' => str_random(10)]);
+        }
+        if(!$order){
+            DB::rollBack();
+        } else {
+            DB::commit();
+        }
         return redirect('/home');
     }
 }
