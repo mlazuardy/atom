@@ -50,7 +50,9 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <span class="nav-link">2 Prepaid Order</span>
+                                <span class="nav-link">
+                                    
+                                </span>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
