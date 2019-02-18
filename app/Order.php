@@ -17,4 +17,13 @@ class Order extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * Accessor to get Rupiah
+     * so we dont need to render rupiah with number_format when needed
+     */
+    public function getTotalAttribute($value)
+    {
+        return number_format($value, 0, ',', '.');
+    }
 }
