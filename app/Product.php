@@ -20,4 +20,14 @@ class Product extends Model
     {
         return number_format($value, 0, ',', '.');
     }
+
+    /**
+     * Mutator
+     * All Product Name will be Capitalize
+     */
+    public function setProductAttribute($value)
+    {
+        $this->attributes['product'] = title_case($value);
+    }
+
 }
