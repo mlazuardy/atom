@@ -5,9 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 use Illuminate\Validation\Rule;
+use App\Repository\OrderRepository;
 
 class OrderController extends Controller
 {
+
+    protected $orderRepository;
+
+    public function __construct(OrderRepository $orderRepository)
+    {
+        $this->orderRepository = $orderRepository;
+    }
+
+    public function index()
+    {
+        $orders = $this->orderRepository->getUserOrders()->paginate(20);
+        return view('orders.index',compact('orders'));
+    }
+
     public function success($no)
     {
         $order = Order::where('order_number',$no)->firstOrFail();
