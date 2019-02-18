@@ -51,7 +51,7 @@
                         @else
                             <li class="nav-item">
                                 <span class="nav-link">
-                                    
+                                    {{Auth::user()->orders()->where('status','unpaid')->count()}} Unpaid Order
                                 </span>
                             </li>
                             <li class="nav-item dropdown">
@@ -60,7 +60,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a href="#" class="dropdown-item">
+                                    <a href="{{route('prepaid.create')}}" class="dropdown-item">
                                         Prepaid Balance
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
