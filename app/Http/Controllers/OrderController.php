@@ -28,7 +28,6 @@ class OrderController extends Controller
     public function success($no)
     {
         $order = Order::where('order_number',$no)->firstOrFail();
-        // dd(\Carbon\Carbon::parse($order->date)->diffInMinutes(\Carbon\Carbon::now()) > 5);
         return view('orders.success',compact('order'));
     }
 
