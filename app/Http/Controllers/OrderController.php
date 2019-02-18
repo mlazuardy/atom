@@ -27,7 +27,7 @@ class OrderController extends Controller
 
     public function success($no)
     {
-        $order = Order::where('order_number',$no)->firstOrFail();
+        $order = $this->orderRepository->getUnpaidOrder()->whereOrderNumber($no)->firstOrFail();
         return view('orders.success',compact('order'));
     }
 

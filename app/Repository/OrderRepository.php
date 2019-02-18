@@ -17,4 +17,9 @@ class OrderRepository
     {
         return $this->model->search($search)->where('user_id',auth()->id())->orderBy('created_at','desc');
     }
+
+    public function getUnpaidOrder()
+    {
+        return $this->model->where('status','unpaid');
+    }
 }
