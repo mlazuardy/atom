@@ -23,10 +23,11 @@
                                 <h3>Rp {{number_format($order->total,0,',','.')}}</h3>
                             </div>
                         </div>
+                        @if($order->orderable_type == "App\Prepaid")
                         <p class="mt-3">
-                            Your mobile phone number {{$order->orderable->mobile_number}}
-                            will receive Rp {{number_format($order->total,0,',','.')}}
+                            Your mobile phone number {{$order->orderable->mobile_number}} will receive Rp {{number_format($order->total,0,',','.')}}
                         </p>
+                        @endif
                         <a href="{{url("/payment?order_number={$order->order_number}")}}" class="btn btn-primary btn-block">PAY NOW</a>
                     </div>
                 </div>
