@@ -9,14 +9,14 @@
                         <h2>Pay your order</h2>
                     </div>
                     <div class="card-body">
-                        <div class="form-group">
-                            <form action="" method="POST">
-                                @csrf
-                                <input type="text" name="order_number" placeholder="Order Number" value="{{old('order_number', request('order_number') )}}"
+                        <form action="{{route('payments.store')}}" method="POST">
+                            @csrf
+                           <div class="form-group">
+                               <input type="text" name="order_number" placeholder="Order Number" value="{{old('order_number', request('order_number') )}}"
                                     class="form-control"> {!! ifError($errors,'order_number') !!}
-                            </form>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">PAY NOW</button>    
+                           </div>
+                           <button type="submit" class="btn btn-primary btn-block">PAY NOW</button>
+                        </form>   
                     </div>
                 </div>
             </div>

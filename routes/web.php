@@ -24,4 +24,6 @@ Route::group(['middleware' => 'auth'],function(){
     //Success
     Route::get('/success/{no}','OrderController@success')->name('orders.success');
     Route::get('/payment','OrderController@payment')->name('payments');
+    //paynow
+    Route::post('/payment','OrderController@prepaidPayment')->name('payments.store');
 });

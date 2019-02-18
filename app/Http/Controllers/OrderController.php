@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use Illuminate\Validation\Rule;
 
 class OrderController extends Controller
 {
@@ -16,5 +17,22 @@ class OrderController extends Controller
     public function payment()
     {
         return view('orders.payment');
+    }
+
+    public function prepaidPayment(Request $request)
+    {
+        $this->validate(request(),[
+            'order_number' => [
+                'required',
+                Rule::exists('orders')->where(function($query){
+                    $query->where('status','unpaid');
+                }),
+            ]
+        ]);
+        
+        $order = Order::where('order_number',$request->order_number)->firstOrFail();
+        $order->status = 'success';
+        $order->save();
+        return redirect('/home');
     }
 }
