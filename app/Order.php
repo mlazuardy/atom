@@ -22,8 +22,8 @@ class Order extends Model
      * Accessor to get Rupiah
      * so we dont need to render rupiah with number_format when needed
      */
-    public function getRupiahAttribute()
+    public function getTotalAttribute($value)
     {
-        return number_format($this->total, 0, ',', '.');
+        return number_format($value, 0, ',', '.');
     }
 }

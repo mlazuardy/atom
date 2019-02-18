@@ -15,4 +15,9 @@ class Product extends Model
     {
         return $this->morphOne('App\Order','orderable');
     }
+
+    public function getPriceAttribute($value)
+    {
+        return number_format($value, 0, ',', '.');
+    }
 }

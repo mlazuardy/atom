@@ -15,4 +15,10 @@ class Prepaid extends Model
     {
         return $this->morphOne('App\Order','orderable');
     }
+
+
+    public function getValueAttribute($value)
+    {
+        return number_format($value, 0, ',', '.');
+    }
 }
