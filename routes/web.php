@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'],function(){
+    Route::get('/prepaid-balance','PrepaidController@create')->name('prepaid.create');
+    Route::post('/prepaid-balance','PrepaidController@store')->name('prepaid.store');
+});
