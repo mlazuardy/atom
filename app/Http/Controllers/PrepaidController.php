@@ -37,6 +37,6 @@ class PrepaidController extends Controller
         } else {
             DB::commit();
         }
-        return redirect()->route('orders.success',$order->order_number);
+        return redirect()->route('order.success',$order->order_number);
     }
 }

@@ -22,8 +22,10 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('/prepaid-balance','PrepaidController@create')->name('prepaid.create');
     Route::post('/prepaid-balance','PrepaidController@store')->name('prepaid.store');
     //Success
-    Route::get('/success/{no}','OrderController@success')->name('orders.success');
-    Route::get('/payment','OrderController@payment')->name('payments');
+    Route::get('/success/{no}','OrderController@success')->name('order.success');
+    Route::get('/payment','OrderController@payment')->name('payment');
     //paynow
-    Route::post('/payment','OrderController@prepaidPayment')->name('payments.store');
+    Route::post('/payment','OrderController@prepaidPayment')->name('payment.store');
+    //product page
+    Route::get('/product','ProductController@create')->name('product.create');
 });

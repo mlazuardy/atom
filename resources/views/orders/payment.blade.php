@@ -9,7 +9,7 @@
                         <h2>Pay your order</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('payments.store')}}" method="POST">
+                        <form action="{{route('payment.store')}}" method="POST">
                             @csrf
                            <div class="form-group">
                                <input type="text" name="order_number" placeholder="Order Number" value="{{old('order_number', request('order_number') )}}"
