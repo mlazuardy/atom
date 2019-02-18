@@ -47,7 +47,7 @@ class OrderController extends Controller
             ]
         ]);
         
-        $order = Order::where('order_number',$request->order_number)->firstOrFail();
+        $order = $this->orderRepository->getUnpaidOrder()->whereOrderNumber($no)->firstOrFail();
         $order->status = 'success';
         $order->save();
         return redirect('/home');
